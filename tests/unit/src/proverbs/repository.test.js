@@ -1,4 +1,4 @@
-const {getAll, create, getById, createClient} = require('../../../../src/proverbs/repository');
+const {getAll, create, update, getById, createClient} = require('../../../../src/proverbs/repository');
 const {resetFixtures, fixtures} = require('../../../setup');
 const {translateWithAlternatives} = require('../../../../src/translator/fake-deepl-translator');
 const {create: createTranslator} = require('../../../../src/translator');
@@ -48,5 +48,24 @@ describe('Proverb repository', () => {
     ]);
     proverbs = await getAll(client);
     expect(proverbs).toHaveLength(3);
+  });
+
+  it('updates an existing proverb', async () => {
+    expect(await getAll(client)).toHaveLength(2);
+    expect(await getById(fixtures.proverbs[0].id, client))
+      .toEqual(fixtures.proverbs[0]);
+
+    const proverb = {
+      id: 'b4172533-0450-4ff4-822c-5e18deace155',
+      title: 'Alle Wege führen nach Rom',
+      meaning: 'Es existieren mehrere Möglichkeiten, eine Aufgabe zu erledigen.',
+      translations: [
+        'All paths lead to Rome'
+      ]
+    };
+    const updated = await update(proverb.id, proverb, client);
+
+    expect(updated).toEqual(proverb);
+    expect(await getAll(client)).toHaveLength(2);
   });
 });

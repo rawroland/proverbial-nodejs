@@ -34,4 +34,19 @@ describe('Proverb routes', () => {
     expect(response.body.data.meaning)
       .toBe('Sich verirren, Umwege machen, ein Ziel nicht richtig oder ein falsches Ziel ansteuern.');
   });
+
+  it('edits an existing proverb', async () => {
+    const proverb = {
+      id: 'b4172533-0450-4ff4-822c-5e18deace155',
+      title: 'Alle Wege führen nach Rom',
+      meaning: 'Es gibt mehrere Möglichkeiten, eine Aufgabe zu erledigen',
+      translations: [
+        'All roads lead to Rome'
+      ]
+    };
+    const response = await request(app).put(`/proverbs/${proverb.id}`).send(proverb);
+
+    expect(response.statusCode).toBe(204);
+    expect(response.body).toEqual({});
+  });
 });
