@@ -1,0 +1,12 @@
+{
+  "collectCoverageFrom": [
+    "src/**/**/*.{js}"
+  ],
+  "setupFiles": [
+    "<rootDir>/tests/setup.js"
+  ],
+  "testPathIgnorePatterns": [
+    "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]",
+    "<rootDir>/tests/integrationContract"
+  ]
+}
