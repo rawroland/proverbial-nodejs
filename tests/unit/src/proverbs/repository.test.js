@@ -1,6 +1,6 @@
 const {getAll, create, getById, createClient} = require('../../../../src/proverbs/repository');
 const {resetFixtures, fixtures} = require('../../../setup');
-const {translateWithAlternatives} = require('deepl-translator');
+const {translateWithAlternatives} = require('../../../../src/translator/fake-deepl-translator');
 const {create: createTranslator} = require('../../../../src/translator');
 
 const translator = createTranslator(translateWithAlternatives);
