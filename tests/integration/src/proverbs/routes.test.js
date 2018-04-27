@@ -3,6 +3,7 @@ const request = require('supertest');
 const bodyParser = require('body-parser');
 const routes = require('../../../../src/proverbs/routes');
 const {resetFixtures, fixtures} = require('../../../setup');
+jest.mock('deepl-translator', () => require('../../../../src/translator/fake-deepl-translator'));
 
 const app = express();
 app.use(bodyParser.json());
