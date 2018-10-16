@@ -18,21 +18,6 @@ const proverbs = [
       'Old love is not rusty',
       'An old love does not rust'
     ]
-  },
-  {
-    title: 'Besser stumm als dumm',
-    meaning: 'Es ist klüger, in bestimmten Situationen seine Meinung nicht zu äußern.',
-    id: '13506e70-e8b5-4c27-aa59-a40bec5ebde1',
-    translations: [
-      'Better dumb than stupid',
-      'Better dumb than stupid',
-      'Better mute than stupid',
-      'Better dumb than dumb',
-      'Better mute than dumb',
-      'Better silent than stupid',
-      'Better mute than foolish',
-      'Better mute than fool'
-    ]
   }
 ];
 

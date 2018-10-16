@@ -26,10 +26,10 @@ const update = async (id, updatedProverb, client) => {
     if (proverb.id !== id) {
       return proverb;
     }
-    return updatedProverb;
+    return {...proverb, ...updatedProverb};
   });
   client.set('proverbs', JSON.stringify(proverbs));
-  return updatedProverb;
+  return proverbs.find(proverb => proverb.id === id);
 };
 
 const createClient = () => {

@@ -56,16 +56,13 @@ describe('Proverb repository', () => {
       .toEqual(fixtures.proverbs[0]);
 
     const proverb = {
-      id: 'b4172533-0450-4ff4-822c-5e18deace155',
-      title: 'Alle Wege führen nach Rom',
-      meaning: 'Es existieren mehrere Möglichkeiten, eine Aufgabe zu erledigen.',
-      translations: [
-        'All paths lead to Rome'
-      ]
+      title: 'Alle Wege führen nicht nach Rom'
     };
-    const updated = await update(proverb.id, proverb, client);
+    const updated = await update(fixtures.proverbs[0].id, proverb, client);
 
-    expect(updated).toEqual(proverb);
+    expect(updated).toEqual({...fixtures.proverbs[0], ...updated});
+    const actual = await getById(fixtures.proverbs[0].id, client);
+    expect(actual.title).toEqual('Alle Wege führen nicht nach Rom');
     expect(await getAll(client)).toHaveLength(2);
   });
 });

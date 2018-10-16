@@ -29,10 +29,12 @@ describe('Proverb routes', () => {
     const response = await request(app).post('/proverbs').send(proverb);
 
     expect(response.statusCode).toBe(201);
-    expect(response.body.data.id).toBeDefined();
-    expect(response.body.data.title).toBe('Auf dem Holzweg sein');
-    expect(response.body.data.meaning)
-      .toBe('Sich verirren, Umwege machen, ein Ziel nicht richtig oder ein falsches Ziel ansteuern.');
+    expect(response.body.data).toEqual({
+      id: expect.any(String),
+      title: 'Auf dem Holzweg sein',
+      meaning: 'Sich verirren, Umwege machen, ein Ziel nicht richtig oder ein falsches Ziel ansteuern.',
+      translations: expect.any(Array)
+    });
   });
 
   it('edits an existing proverb', async () => {
