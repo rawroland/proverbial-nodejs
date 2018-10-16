@@ -1,1 +1,2 @@
-module.exports = require('dotenv').config().parsed;
+import * as dotenv from 'dotenv';
+export default dotenv.config().parsed;

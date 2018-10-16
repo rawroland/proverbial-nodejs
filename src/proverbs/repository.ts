@@ -1,6 +1,6 @@
-const uuid = require('uuid');
-const redis = require('redis-mock');
-const {promisify} = require('util');
+import * as uuid from 'uuid';
+import * as redis from 'redis-mock';
+import {promisify} from 'util';
 
 const getAll = client => {
   const getAsync = promisify(client.get).bind(client);
@@ -36,4 +36,4 @@ const createClient = () => {
   return redis.createClient();
 };
 
-module.exports = { create, getAll, getById, update, createClient };
+export { create, getAll, getById, update, createClient };

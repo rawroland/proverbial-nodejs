@@ -6,4 +6,4 @@ const create = translate => {
   }
 };
 
-module.exports = {create};
+export {create};

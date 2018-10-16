@@ -1,6 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { routes: proverbRoutes } = require('./src/proverbs');
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
+import { routes as proverbRoutes } from './src/proverbs/index';
 
 const app = express();
 app.all('*', (req, res, next) => {
@@ -12,4 +12,4 @@ app.all('*', (req, res, next) => {
 app.use(bodyParser.json());
 app.use(proverbRoutes);
 
-module.exports = app;
+export default app;

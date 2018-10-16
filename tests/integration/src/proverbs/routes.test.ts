@@ -1,11 +1,11 @@
-const express = require('express');
-const request = require('supertest');
-const bodyParser = require('body-parser');
-const routes = require('../../../../src/proverbs/routes');
-const {resetFixtures, fixtures} = require('../../../setup');
+import * as express from 'express';
+import * as request from 'supertest';
+import * as bodyParser from 'body-parser';
+import routes from '../../../../src/proverbs/routes';
+import {resetFixtures, fixtures} from '../../../setup';
 jest.mock('deepl-translator', () => require('../../../../src/translator/fake-deepl-translator'));
 
-const app = express();
+const app: express.Application = express();
 app.use(bodyParser.json());
 app.use(routes);
 

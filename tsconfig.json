@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "allowJs": true,
+    "target": "es2018",
+    "lib": [
+      "es2018",
+      "es6"
+    ],
+    "module": "commonjs"
+  },
+  "include": [
+    "./src/**/*",
+    "app.js",
+    "server.js"
+  ]
+}

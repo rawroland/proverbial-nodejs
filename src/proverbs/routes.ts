@@ -1,10 +1,11 @@
-const router = require('express').Router();
-const repository = require('./repository');
-const {create: createTranslator} = require('../translator');
-const {translateWithAlternatives} = require('deepl-translator');
+import {Router} from 'express';
+import * as repository from './repository';
+import {create as createTranslator} from '../translator/index';
+import {translateWithAlternatives} from 'deepl-translator';
 
 const client = repository.createClient();
 const translator = createTranslator(translateWithAlternatives);
+const router: Router = Router();
 
 router.get('/proverbs', async (req, res) => {
   const data = await repository.getAll(client);
@@ -21,4 +22,4 @@ router.put('/proverbs/:id', async (req, res) => {
   res.status(204).send();
 });
 
-module.exports = router;
+export default router;

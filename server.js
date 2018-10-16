@@ -1,7 +1,7 @@
-const app = require('./app');
-const config = require('./config');
-const express = require('express');
-const {resetFixtures, fixtures} = require('./tests/setup');
+import app from './app';
+import config from './config';
+import * as express from 'express';
+import {resetFixtures, fixtures} from './tests/setup';
 const proverbs = [
   ...fixtures.proverbs,
   {

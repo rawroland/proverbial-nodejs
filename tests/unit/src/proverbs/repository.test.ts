@@ -1,7 +1,7 @@
-const {getAll, create, update, getById, createClient} = require('../../../../src/proverbs/repository');
-const {resetFixtures, fixtures} = require('../../../setup');
-const {translateWithAlternatives} = require('../../../../src/translator/fake-deepl-translator');
-const {create: createTranslator} = require('../../../../src/translator');
+import {getAll, create, update, getById, createClient} from '../../../../src/proverbs/repository';
+import {resetFixtures, fixtures} from '../../../setup';
+import {translateWithAlternatives} from '../../../../src/translator/fake-deepl-translator';
+import {create as createTranslator} from '../../../../src/translator/index';
 
 const translator = createTranslator(translateWithAlternatives);
 const client = createClient();

@@ -36,3 +36,7 @@ tags
 #########
 coverage
 reports
+
+# Compiled files #
+##################
+dist
