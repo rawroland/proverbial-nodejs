@@ -1,18 +1,19 @@
 import * as uuid from 'uuid';
 import * as redis from 'redis-mock';
 import {promisify} from 'util';
+import {RedisClient} from 'redis';
 
-const getAll = client => {
+const getAll = (client: RedisClient) => {
   const getAsync = promisify(client.get).bind(client);
   return getAsync('proverbs').then(proverbs => JSON.parse(proverbs));
 };
 
-const getById = async (id, client) => {
+const getById = async (id: string, client: RedisClient) => {
   const proverbs = await getAll(client);
   return proverbs.find(proverb => proverb.id === id);
 };
 
-const create = async (proverb, client, translator) => {
+const create = async (proverb: any, client: RedisClient, translator: any) => {
   proverb.id = uuid();
   const translations = await translator.translate(proverb.title, 'DE', 'EN');
   proverb.translations = [translations.translation, ...translations.translationAlternatives];
@@ -21,7 +22,7 @@ const create = async (proverb, client, translator) => {
   return proverb;
 };
 
-const update = async (id, updatedProverb, client) => {
+const update = async (id: string, updatedProverb: object, client: RedisClient) => {
   const proverbs = (await getAll(client)).map(proverb => {
     if (proverb.id !== id) {
       return proverb;
@@ -36,4 +37,4 @@ const createClient = () => {
   return redis.createClient();
 };
 
-export { create, getAll, getById, update, createClient };
+export {create, getAll, getById, update, createClient};
