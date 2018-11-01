@@ -17,7 +17,7 @@ describe('Proverb routes', () => {
   it('responds with a list of all proverbs', async () => {
     const response = await request(app).get('/proverbs');
 
-    expect(response.statusCode).toBe(200);
+    expect(response.status).toBe(200);
     expect(response.body).toEqual({data: fixtures.proverbs});
   });
 
@@ -28,7 +28,7 @@ describe('Proverb routes', () => {
     };
     const response = await request(app).post('/proverbs').send(proverb);
 
-    expect(response.statusCode).toBe(201);
+    expect(response.status).toBe(201);
     expect(response.body.data).toEqual({
       id: expect.any(String),
       title: 'Auf dem Holzweg sein',
@@ -48,7 +48,7 @@ describe('Proverb routes', () => {
     };
     const response = await request(app).put(`/proverbs/${proverb.id}`).send(proverb);
 
-    expect(response.statusCode).toBe(204);
+    expect(response.status).toBe(204);
     expect(response.body).toEqual({});
   });
 });
